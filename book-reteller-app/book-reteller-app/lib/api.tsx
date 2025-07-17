@@ -3,8 +3,11 @@ import { DocumentPickerAsset } from "expo-document-picker";
 
 const BASE_URL = "http://192.168.1.161:8000/api/v1";
 
-export const uploadBook = async (file: DocumentPickerAsset, startPage = 0, endPage = null) => {
-  console.log("📦 Preparing FormData for upload...");
+export const uploadBook = async (
+  file: DocumentPickerAsset,
+  startPage = 0,
+  endPage = null
+) => {
   const formData = new FormData();
 
   formData.append("file", {
@@ -16,18 +19,11 @@ export const uploadBook = async (file: DocumentPickerAsset, startPage = 0, endPa
   formData.append("start_page", startPage.toString());
   if (endPage !== null) formData.append("end_page", endPage.toString());
 
-  try {
-    console.log("Sending request to:", `${BASE_URL}/summarize`);
-    const response = await axios.post(`${BASE_URL}/summarize`, formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+  const response = await axios.post(`${BASE_URL}/summarize`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
 
-    console.log("Server response:", response.data);
-    return response.data.file_id;
-  } catch (error: any) {
-    console.error("Error uploading book:", error?.message || error);
-    throw error;
-  }
+  return response.data.file_id;
 };
 
 export const fetchSummary = async (fileId: string) => {
