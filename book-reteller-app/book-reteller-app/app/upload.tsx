@@ -38,10 +38,18 @@ export default function UploadScreen() {
       Alert.alert("No file selected");
       return;
     }
-
+  
+    const start = parseInt(startPage);
+    const end = endPage ? parseInt(endPage) : null;
+  
+    if (isNaN(start) || (endPage && isNaN(end))) {
+      Alert.alert("Invalid page number", "Please enter valid numeric values.");
+      return;
+    }
+  
     setLoading(true);
     try {
-      const fileId = await uploadBook(file, parseInt(startPage), endPage ? parseInt(endPage) : null);
+      const fileId = await uploadBook(file, start, end);
       router.push({ pathname: "/summary", params: { fileId } });
     } catch (e: any) {
       Alert.alert("Upload failed", e.message);
