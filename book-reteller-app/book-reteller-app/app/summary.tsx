@@ -71,14 +71,14 @@ export default function SummaryScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 24, marginTop:53, backgroundColor: "#f5f5f5" },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 16 },
+  container: { flex: 1, padding: 25, paddingTop:53, backgroundColor: "#0c377bff" },
+  title: { fontSize: 24, fontWeight: "bold", marginBottom: 16, color: "#f0f0f0" },
   scroll: { flex: 1, marginBottom: 20 },
-  summaryText: { fontSize: 16, lineHeight: 24, color: "#333" },
+  summaryText: { fontSize: 16, lineHeight: 24, color: "#eee" },
   button: {
-    backgroundColor: "#10B981",
+    backgroundColor: "#f0f0f0",
     paddingVertical: 12,
     borderRadius: 10,
   },
-  buttonText: { textAlign: "center", color: "#fff", fontSize: 16 },
+  buttonText: { textAlign: "center", color: "#0c377bff", fontSize: 16.5, fontWeight:600 },
 });

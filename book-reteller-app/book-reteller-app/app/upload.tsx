@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   TextInput,
   Keyboard, 
-  TouchableWithoutFeedback ,
+  TouchableWithoutFeedback,
+  ImageBackground,
 } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 import { useRouter } from "expo-router";
@@ -59,6 +60,11 @@ export default function UploadScreen() {
   };
 
   return (
+    <ImageBackground 
+      source={require('../assets/images/back.jpg')}
+      style={styles.background}
+      resizeMode="cover"
+    >
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
       <Text style={styles.title}>📘 Book Reteller</Text>
@@ -97,32 +103,38 @@ export default function UploadScreen() {
       {loading && <ActivityIndicator size="large" style={styles.loader} />}
     </View>
     </TouchableWithoutFeedback>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 24, backgroundColor: "#f5f5f5" },
-  title: { fontSize: 28, fontWeight: "bold", textAlign: "center", marginBottom: 8 },
-  subtitle: { fontSize: 16, textAlign: "center", marginBottom: 24, color: "#555" },
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  container: { flex: 1, justifyContent: "center", padding: 24, backgroundColor: "rgba(0, 0, 0, 0.4)" },
+  title: { fontSize: 30, fontWeight: "bold", textAlign: "center", marginBottom: 8 },
+  subtitle: { fontSize: 17, textAlign: "center", marginBottom: 24, color: "#222" },
   button: {
-    backgroundColor: "#3B82F6",
+    backgroundColor: "#0c377bff",
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 10,
     marginBottom: 12,
   },
   buttonText: { color: "#fff", textAlign: "center", fontSize: 16 },
-  disabledButton: { backgroundColor: "#ccc" },
+  disabledButton: { backgroundColor: "#5b7f98ff" },
   filename: { fontSize: 14, marginBottom: 16, textAlign: "center", color: "#333" },
-  loader: { marginTop: 20 },
+  loader: { marginTop: 20},
   input: {
   borderWidth: 1,
-  borderColor: "#ccc",
+  borderColor: "#bbb",
   padding: 10,
   borderRadius: 8,
   marginBottom: 12,
   fontSize: 16,
-  backgroundColor: "#fff",
+  backgroundColor: "#3f7bec72",
 },
 
 });
